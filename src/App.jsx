@@ -1,10 +1,12 @@
 import './styles/App.css'
+import  General  from './components/General'
+
 
 function App() {
   return (
-    <>
-      <div>Hello</div>
-    </>
+    <div className="App">
+      <General />
+    </div>
   )
 }
 

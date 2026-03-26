@@ -1,0 +1,21 @@
+input{
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+input:invalid {
+    border: 2px solid red;
+}
+
+/* valid input */
+input:valid {
+    border: 2px solid green;
+}
