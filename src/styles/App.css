@@ -1,6 +1,126 @@
-.App{
+/* ── Builder layout ───────────────────────────────── */
+.App {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1.25rem;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 1rem 0 3rem;
+}
+
+.App>h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text);
+    align-self: flex-start;
+}
+
+.warning {
+    font-size: 0.85rem;
+    color: var(--color-error);
+}
+
+/* ── CV Preview — outer card ──────────────────────── */
+.cv-preview {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 3rem;
+    max-width: 720px;
+    width: 100%;
+    margin: 2rem auto;
+    box-shadow: var(--shadow-md);
+}
+
+/* ── Header block ─────────────────────────────────── */
+.cv-preview__header {
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.cv-preview__header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.35rem;
+}
+
+.cv-preview__contact {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+/* ── Section headings (Education, Experience) ─────── */
+.cv-preview h2 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin: 1.75rem 0 0.75rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1.5px solid var(--color-border);
+}
+
+/* ── Entry row (flexbox: text left, date right) ───── */
+.cv-preview__entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     gap: 1rem;
+}
+
+.cv-preview__entry-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+/* ── Entry text styles ────────────────────────────── */
+.cv-preview__school,
+.cv-preview__company {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.cv-preview__degree,
+.cv-preview__position {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.cv-preview__responsibilities {
+    font-size: 0.88rem;
+    color: var(--color-text);
+    margin-top: 0.4rem;
+    line-height: 1.6;
+}
+
+.cv-preview__date {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    /* keeps date from wrapping on small screens */
+    padding-top: 0.15rem;
+}
+
+/* ── Actions row ──────────────────────────────────── */
+.cv-preview__actions {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (max-width: 540px) {
+    .cv-preview {
+        padding: 1.5rem;
+    }
+
+    .cv-preview__entry {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
 }

@@ -25,9 +25,10 @@ export default function General({data, setData, markSubmitted}) {
     }
 
     return (
-        <div>
+        <div className="form-section">
+            <h2>General Info</h2>
             <form className="GeneralInfo" onSubmit={handleSubmit}>
-                <p>{isEditing ? "Editing Mode" : "Preview Mode"}</p>
+                <p className="section-mode">{isEditing ? "Editing Mode" : "Preview Mode"}</p>
                 <Input
                     type="text"
                     id="fullName"

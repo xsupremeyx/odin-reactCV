@@ -49,23 +49,31 @@ export default function App() {
             setData={(data) =>
               setCVData((prev) => ({ ...prev, general: data }))
             }
-            markSubmitted={(value) => setSectionsSubmitted(prev => ({ ...prev, general: value }))}
+            markSubmitted={(value) =>
+              setSectionsSubmitted((prev) => ({ ...prev, general: value }))
+            }
           />
           <Education
             data={cvData.education}
             setData={(data) =>
               setCVData((prev) => ({ ...prev, education: data }))
             }
-            markSubmitted={(value) => setSectionsSubmitted(prev => ({ ...prev, education: value }))}
+            markSubmitted={(value) =>
+              setSectionsSubmitted((prev) => ({ ...prev, education: value }))
+            }
           />
           <Experience
             data={cvData.experience}
             setData={(data) =>
               setCVData((prev) => ({ ...prev, experience: data }))
             }
-            markSubmitted={(value) => setSectionsSubmitted(prev => ({ ...prev, experience: value }))}
+            markSubmitted={(value) =>
+              setSectionsSubmitted((prev) => ({ ...prev, experience: value }))
+            }
           />
-          <button type="button" onClick={handleFinalSubmit}
+          <button
+            type="button"
+            onClick={handleFinalSubmit}
             disabled={
               !sectionsSubmitted.general ||
               !sectionsSubmitted.education ||
@@ -74,31 +82,60 @@ export default function App() {
           >
             Generate CV
           </button>
-          {(!sectionsSubmitted.general || !sectionsSubmitted.education || !sectionsSubmitted.experience) && (
-            <p className="warning">Please complete all sections before generating the CV.</p>
+          {(!sectionsSubmitted.general ||
+            !sectionsSubmitted.education ||
+            !sectionsSubmitted.experience) && (
+            <p className="warning">
+              Please complete all sections before generating the CV.
+            </p>
           )}
         </>
       ) : (
-        <div>
-          <h1>{cvData.general.fullName}</h1>
-          <p>
-            {cvData.general.email} | {cvData.general.phoneNumber}
-          </p>
+        <div className="cv-preview">
+          {/* Header */}
+          <div className="cv-preview__header">
+            <h1>{cvData.general.fullName}</h1>
+            <p className="cv-preview__contact">
+              {cvData.general.email} · {cvData.general.phoneNumber}
+            </p>
+          </div>
 
+          {/* Education */}
           <h2>Education</h2>
-          <p>{cvData.education.school}</p>
-          <p>{cvData.education.degree}</p>
-          <p>{cvData.education.date}</p>
+          <div className="cv-preview__entry">
+            <div className="cv-preview__entry-main">
+              <span className="cv-preview__school">
+                {cvData.education.school}
+              </span>
+              <span className="cv-preview__degree">
+                {cvData.education.degree}
+              </span>
+            </div>
+            <span className="cv-preview__date">{cvData.education.date}</span>
+          </div>
 
+          {/* Experience */}
           <h2>Experience</h2>
-          <p>{cvData.experience.company}</p>
-          <p>{cvData.experience.position}</p>
-          <p>{cvData.experience.responsibilities}</p>
-          <p>
-            {cvData.experience.from} - {cvData.experience.to}
-          </p>
+          <div className="cv-preview__entry">
+            <div className="cv-preview__entry-main">
+              <span className="cv-preview__company">
+                {cvData.experience.company}
+              </span>
+              <span className="cv-preview__position">
+                {cvData.experience.position}
+              </span>
+              <p className="cv-preview__responsibilities">
+                {cvData.experience.responsibilities}
+              </p>
+            </div>
+            <span className="cv-preview__date">
+              {cvData.experience.from} — {cvData.experience.to}
+            </span>
+          </div>
 
-          <button onClick={handleEditCV}>Edit CV</button>
+          <div className="cv-preview__actions">
+            <button onClick={handleEditCV}>Edit CV</button>
+          </div>
         </div>
       )}
     </div>

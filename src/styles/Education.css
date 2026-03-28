@@ -1,15 +1,36 @@
+/* ── Education section — 2-column grid ───────────── */
 .education {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
 }
 
-button {
-    padding: 0.5rem 1rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+/* Mode badge and button span both columns */
+.education>p,
+.education>button {
+    grid-column: 1 / -1;
 }
 
+/* School (col 1) and Degree (col 2) auto-place */
+
+/* Date of Completion spans both columns */
+.education>.InputCard:nth-of-type(3) {
+    grid-column: 1 / -1;
+}
+
+/* Add to the bottom of each section CSS file */
+@media (max-width: 540px) {
+
+    .GeneralInfo,
+    .education,
+    .experience {
+        grid-template-columns: 1fr;
+    }
+
+    /* Reset all grid-column spans on mobile */
+    .GeneralInfo>*,
+    .education>*,
+    .experience>* {
+        grid-column: 1 / -1;
+    }
+}

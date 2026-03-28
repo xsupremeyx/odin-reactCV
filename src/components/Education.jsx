@@ -22,9 +22,10 @@ export default function Education({data, setData, markSubmitted}) {
     }
 
     return (
-        <div>
+        <div className="form-section">
+            <h2>Education</h2>
             <form className="education" onSubmit={handleSubmit}>
-                <p>{isEditing ? "Editing Mode" : "Preview Mode"}</p>
+                <p className="section-mode">{isEditing ? "Editing Mode" : "Preview Mode"}</p>
 
                 <Input
                     type="text"

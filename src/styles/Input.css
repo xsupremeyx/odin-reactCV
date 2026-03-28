@@ -1,33 +1,53 @@
-input{
+/* ── Input card (label + field pair) ─────────────── */
+.InputCard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.InputCard label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ── Input field ──────────────────────────────────── */
+input {
     width: 100%;
-    padding: 8px;
-    margin-top: 4px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 0.55rem 0.75rem;
+    font-size: 0.95rem;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: #fff;
+    color: var(--color-text);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none;
 }
 
 input:focus {
-    border-color: #007bff;
-    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
 }
 
 input:invalid {
-    border: 2px solid red;
+    border-color: var(--color-error);
 }
 
-/* valid input */
 input:valid {
-    border: 2px solid green;
+    border-color: var(--color-success);
 }
 
+/* ── Read-only / disabled state ───────────────────── */
 .disabled {
-    background-color: #f5f5f5;
+    background-color: var(--color-disabled-bg);
+    color: var(--color-disabled-text);
+    border-color: var(--color-border);
     cursor: not-allowed;
-    border: 2px solid #4f4a4a;
-    color: #4f4a4a;
 }
 
 .disabled:focus {
-    border-color: #4f4a4a;
-    outline: none;
+    border-color: var(--color-border);
+    box-shadow: none;
 }
