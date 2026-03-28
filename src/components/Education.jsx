@@ -2,31 +2,23 @@ import { useState } from 'react';
 import Input from './Input.jsx';
 import '../styles/Education.css';
 
-export default function Education() {
+export default function Education({data, setData, markSubmitted}) {
     const [isEditing, setIsEditing] = useState(true);
-
-    const [education, setEducation] = useState({
-        school: '',
-        degree: '',
-        date: '',
-    });
 
     function handleChange(e) {
         const { name, value } = e.target;
-        setEducation(prev => ({
-            ...prev,
-            [name]: value,
-        }));
+        setData({...data,[name]: value,});
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(education);
         setIsEditing(false);
+        markSubmitted(true);
     }
 
     function handleEdit() {
         setIsEditing(true);
+        markSubmitted(false);
     }
 
     return (
@@ -39,7 +31,7 @@ export default function Education() {
                     id="school"
                     label="Institute Name"
                     placeholder="Institute Name"
-                    value={education.school}
+                    value={data.school}
                     onChange={handleChange}
                     readOnly={!isEditing}
                     className={isEditing ? '' : 'disabled'}
@@ -50,7 +42,7 @@ export default function Education() {
                     id="degree"
                     label="Degree"
                     placeholder="Degree"
-                    value={education.degree}
+                    value={data.degree}
                     onChange={handleChange}
                     readOnly={!isEditing}
                     className={isEditing ? '' : 'disabled'}
@@ -60,7 +52,7 @@ export default function Education() {
                     type="date"
                     id="date"
                     label="Date of Completion"
-                    value={education.date}
+                    value={data.date}
                     onChange={handleChange}
                     readOnly={!isEditing}
                     className={isEditing ? '' : 'disabled'}

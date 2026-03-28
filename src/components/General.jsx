@@ -5,32 +5,23 @@ import Input from './Input.jsx';
 import '../styles/General.css';
 
 
-export default function General(){
+export default function General({data, setData, markSubmitted}) {
     const [isEditing, setIsEditing] = useState(true);
-
-    const [generalInfo, setGeneralInfo] = useState({
-        fullName: '',
-        email: '',
-        phoneNumber: '',
-    });
 
     function handleChange(e){
         const {name, value} = e.target;
-        setGeneralInfo(prevInfo => ({
-            ...prevInfo,
-            [name]: value,
-        }));
+        setData({...data,[name]: value,});
     }
 
     function handleSubmit(e){
         e.preventDefault();
-        console.log(generalInfo);
         setIsEditing(false);
+        markSubmitted(true);
     }
 
     function handleEdit(){
-        console.log("Edit button clicked");
         setIsEditing(true);
+        markSubmitted(false);
     }
 
     return (
@@ -42,7 +33,7 @@ export default function General(){
                     id="fullName"
                     label="Full Name"
                     placeholder="Full Name"
-                    value={generalInfo.fullName}
+                    value={data.fullName}
                     onChange={handleChange}
                     required
                     readOnly={!isEditing}
@@ -54,7 +45,7 @@ export default function General(){
                     id="email"
                     label="Email"
                     placeholder="Email"
-                    value={generalInfo.email}
+                    value={data.email}
                     onChange={handleChange}
                     required
                     readOnly={!isEditing}
@@ -66,7 +57,7 @@ export default function General(){
                     id="phoneNumber"
                     label="Phone Number"
                     placeholder="Phone Number"
-                    value={generalInfo.phoneNumber}
+                    value={data.phoneNumber}
                     onChange={handleChange}
                     required
                     pattern="[0-9]{10}"

@@ -2,33 +2,23 @@ import { useState } from 'react';
 import Input from './Input.jsx';
 import '../styles/Experience.css';
 
-export default function Experience() {
+export default function Experience({data, setData, markSubmitted}) {
     const [isEditing, setIsEditing] = useState(true);
-
-    const [experience, setExperience] = useState({
-        company: '',
-        position: '',
-        responsibilities: '',
-        from: '',
-        to: '',
-    });
 
     function handleChange(e) {
         const { name, value } = e.target;
-        setExperience(prev => ({
-            ...prev,
-            [name]: value,
-        }));
+        setData({...data,[name]: value,});
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(experience);
         setIsEditing(false);
+        markSubmitted(true);
     }
 
     function handleEdit() {
         setIsEditing(true);
+        markSubmitted(false);
     }
 
     return (
@@ -41,7 +31,7 @@ export default function Experience() {
                     id="company"
                     label="Company"
                     placeholder="Company"
-                    value={experience.company}
+                    value={data.company}
                     onChange={handleChange}
                     readOnly={!isEditing}
                     className={isEditing ? '' : 'disabled'}
@@ -52,7 +42,7 @@ export default function Experience() {
                     id="position"
                     label="Position"
                     placeholder="Position"
-                    value={experience.position}
+                    value={data.position}
                     onChange={handleChange}
                     readOnly={!isEditing}
                     className={isEditing ? '' : 'disabled'}
@@ -63,7 +53,7 @@ export default function Experience() {
                     id="responsibilities"
                     label="Responsibilities"
                     placeholder="Responsibilities"
-                    value={experience.responsibilities}
+                    value={data.responsibilities}
                     onChange={handleChange}
                     readOnly={!isEditing}
                     className={isEditing ? '' : 'disabled'}
@@ -73,7 +63,7 @@ export default function Experience() {
                     type="date"
                     id="from"
                     label="From"
-                    value={experience.from}
+                    value={data.from}
                     onChange={handleChange}
                     readOnly={!isEditing}
                     className={isEditing ? '' : 'disabled'}
@@ -83,7 +73,7 @@ export default function Experience() {
                     type="date"
                     id="to"
                     label="To"
-                    value={experience.to}
+                    value={data.to}
                     onChange={handleChange}
                     readOnly={!isEditing}
                     className={isEditing ? '' : 'disabled'}
