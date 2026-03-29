@@ -4,6 +4,9 @@ A simple and interactive CV (résumé) builder built with React. Users can input
 
 ---
 
+## Live Deployment
+[View Live CV Builder](https://odin-reactcv.ym06112005.workers.dev/)
+
 ## 🚀 Features
 
 *  Add General Information (Name, Email, Phone)
